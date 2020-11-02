@@ -46,13 +46,13 @@ var paletteController = {
         //     }
         // },
         'candy': function(colorIndex) {
-            var i = Math.floor(colorIndex * 360) % 4
+            var i = Math.floor(colorIndex * 360) % 5
             switch(i) {
                 case 0: return[0,0,0,255];
-                case 1: return[255,198,143,255];
+                case 1: return[148,220,112,255];
                 case 2: return[143,200,255,255];
                 case 3: return[255,143,198,255];
-                // case 4: return[154,50,205,255];
+                case 4: return[255,198,143,255];
             }
         }
     },
