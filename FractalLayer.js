@@ -138,6 +138,8 @@ L.TileLayer.FractalLayer = L.TileLayer.Canvas.extend({
     
     _renderTile: function (canvas, tilePoint,workerID) {
         var z = this._map.getZoom();
+        // for (z; i < 100; z=z+1) {
+        // // var z = i;
     	canvas._tileIndex = {x: tilePoint.x, y: tilePoint.y, z: z};
         var tileID=tilePoint.x+":"+tilePoint.y+":"+z;
         this.messages[tileID]=canvas;
@@ -153,7 +155,8 @@ L.TileLayer.FractalLayer = L.TileLayer.Canvas.extend({
             maxIter: this.maxIter,
             type: this.fractalType
         });
-    }
+        }
+    //  }
 });
 L.tileLayer.fractalLayer = function(colorController, numWorkers,t,mi,cr,ci){
 	return new L.TileLayer.FractalLayer(colorController, numWorkers,t,mi,cr,ci);

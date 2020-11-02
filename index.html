@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Elmo the monster</title>
+	<title>Little elmo Monster ELMO</title>
 
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
     <link rel="stylesheet" href="PaletteControl.css" />
@@ -14,50 +14,30 @@
 	<script src="FractalLayer.js"></script>
     
     <style>
-        body, html, #map {
+        #map {
             width: 100%;
             height: 100%;
             margin: 0px;
+            top: 0cm;
+            position: fixed;
         }
         
     </style>
-    	<!--Fork Me on Github ribbon, we're using the awsome version from simonwhitaker available at https://github.com/simonwhitaker/github-fork-ribbon-css -->
-        <link rel="stylesheet" href="gh-fork-ribbon.css" />
 </head>
-
-<body>
-    <!-- <div class="github-fork-ribbon-wrapper right">
-        <div class="github-fork-ribbon">
-            <a href="https://github.com/aparshin/leaflet-fractal">Fork me on GitHub</a>
-        </div>
-    </div> -->
+    <div id="map"></div>
     
-	<div id="map"></div>
-    
-	<script type="text/javascript">
+    <script type="text/javascript">
         var map = L.map('map', {minZoom:1});
-        
+
         var numWorkers = 3;
         
         var layers = {
-            "mandlebrot":L.tileLayer.fractalLayer(paletteController, numWorkers).addTo(map),
-            "multibrot3":L.tileLayer.fractalLayer(paletteController, numWorkers,"multibrot3",300),
-            //Dosn't work at the moment "multibrot5":L.tileLayer.fractalLayer(6,"multibrot5",200),
-            "burning ship":L.tileLayer.fractalLayer(paletteController, numWorkers,"burningShip"),
-            "tricorn":L.tileLayer.fractalLayer(paletteController, numWorkers,"tricorn"),
-            "julia -0.74543+0.11301*i":L.tileLayer.fractalLayer(paletteController, numWorkers,"julia"),
-            "julia -0.75+0.11*i":L.tileLayer.fractalLayer(paletteController, numWorkers,"julia",500,-0.75,0.11),
-            "julia -0.1+0.651*i":L.tileLayer.fractalLayer(paletteController, numWorkers,"julia",500,-0.1,0.651),
-            "julia -0.4+0.6*i":L.tileLayer.fractalLayer(paletteController, numWorkers,"julia",500,-0.4,0.6),
-            "julia -0.8+0.156*i":L.tileLayer.fractalLayer(paletteController, numWorkers,"julia",500,-0.8,0.156),
-             "julia -1.118484848+0.273636364*i":L.tileLayer.fractalLayer(paletteController, numWorkers,"julia",300,-1.118484848,0.273636364),
-             "julia  -0.37+0.6*i":L.tileLayer.fractalLayer(paletteController, numWorkers,"julia",500,-0.37,0.6)
+             "julia  -0.37+0.6*i":L.tileLayer.fractalLayer(paletteController, numWorkers,"julia",700,-0.60,0.5).addTo(map)
         }
         
-        var lc=L.control.layers(layers,{},{position:"topleft",collapsed:false}).addTo(map);
+        var lc=L.control.layers(layers,{},{position:"bottomright",collapsed:true}).addTo(map);
         
-        map.setView([0, -90], 2).addHash({lc:lc}).addControl(new PaletteControl(layers, {position: "topleft"}));
-      
+        map.setView([-3,7], 2).addHash({lc:lc}).addControl(new PaletteControl(layers));
 	</script>
 </body>
 </html>
